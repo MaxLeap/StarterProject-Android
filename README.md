@@ -1,5 +1,5 @@
-# LAS-StarterProject-Android
-LAS-StarterProject-Android
+# LeapCloud-StarterProject-Android
+LeapCloud-StarterProject-Android
 
 ##  Install the SDK
 
@@ -8,17 +8,17 @@ LAS-StarterProject-Android
 2. Open the project
 
 	In Android Studio, go to `File → Open…`
-	Select `build.gradle` in the root of LAS-StarterProject-Android.
+	Select `build.gradle` in the root of LC-StarterProject-Android.
 
-## Connect your app to LAS
+## Connect your app to LeapCloud
 
-Before continuing, select your LAS app from the menu.
+Before continuing, select your LeapCloud app from the menu.
 
 Add your keys to your project:
 
 ```java
 public void onCreate() {
-  LASConfig.initialize(this, "your app id", "your api key");
+  LeapCloud.initialize(this, "your app id", "your api key");
 }
 ```
 Compile and run!
@@ -28,9 +28,9 @@ Compile and run!
 After installing the SDK, copy and paste this code into your app, for example in `MainActivity.onCreate()`:
 
 ```java
-LASObject testObject = new LASObject("TestObject");
+LCObject testObject = new LCObject("TestObject");
 testObject.put("foo", "bar");
-LASDataManager.saveInBackground(testObject);
+LCDataManager.saveInBackground(testObject);
 ```
 
-Run your app. A new object of class `TestObject` will be sent to the LAS Cloud and saved.
+Run your app. A new object of class `TestObject` will be sent to the LeapCloud and saved.
