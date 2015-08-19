@@ -2,8 +2,7 @@ package com.lasstarter;
 
 import android.app.Application;
 
-import as.leap.LASConfig;
-
+import as.leap.LeapCloud;
 
 public class App extends Application {
 
@@ -16,13 +15,13 @@ public class App extends Application {
 
         if (APP_ID.startsWith("Replace") || API_KEY.startsWith("Replace")) {
             throw new IllegalArgumentException("Please replace with your app id and api key first before" +
-                    "using LAS SDK.");
+                    "using LeapCloud SDK.");
         }
 
 		/*
-         * Fill in this section with your LAS credentials
+         * Fill in this section with your LeapCloud credentials
 		 */
-        LASConfig.setLogLevel(LASConfig.LOG_LEVEL_ERROR);
-        LASConfig.initialize(getApplicationContext(), APP_ID, API_KEY);
+        LeapCloud.setLogLevel(LeapCloud.LOG_LEVEL_ERROR);
+        LeapCloud.initialize(getApplicationContext(), APP_ID, API_KEY);
     }
 }

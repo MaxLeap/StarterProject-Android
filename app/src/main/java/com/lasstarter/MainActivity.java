@@ -5,11 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import as.leap.LASDataManager;
-import as.leap.LASLog;
-import as.leap.LASObject;
-import as.leap.callback.SaveCallback;
-import as.leap.exception.LASException;
+import as.leap.LCDataManager;
+import as.leap.LCLog;
+import as.leap.LCObject;
+import as.leap.SaveCallback;
+import as.leap.exception.LCException;
 
 public class MainActivity extends Activity {
 
@@ -23,16 +23,16 @@ public class MainActivity extends Activity {
         findViewById(R.id.click_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LASObject testObject = new LASObject("TestObject");
+                LCObject testObject = new LCObject("TestObject");
                 testObject.put("foo", "bar");
-                LASDataManager.saveInBackground(testObject, new SaveCallback() {
+                LCDataManager.saveInBackground(testObject, new SaveCallback() {
                     @Override
-                    public void done(LASException e) {
+                    public void done(LCException e) {
                         if (e != null) {
-                            LASLog.e(TAG, e);
+                            LCLog.e(TAG, e);
                             return;
                         }
-                        Toast.makeText(MainActivity.this, "Finish saving data on LAS server", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Finish saving data on LC server", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
