@@ -1,4 +1,4 @@
-package com.lasstarter;
+package as.leap.starter;
 
 import android.app.Application;
 
