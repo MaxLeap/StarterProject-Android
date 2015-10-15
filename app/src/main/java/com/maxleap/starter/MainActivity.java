@@ -1,15 +1,15 @@
-package as.leap.starter;
+package com.maxleap.starter;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import as.leap.LCDataManager;
-import as.leap.LCLog;
-import as.leap.LCObject;
-import as.leap.SaveCallback;
-import as.leap.exception.LCException;
+import com.maxleap.MLDataManager;
+import com.maxleap.MLLog;
+import com.maxleap.MLObject;
+import com.maxleap.SaveCallback;
+import com.maxleap.exception.MLException;
 
 public class MainActivity extends Activity {
 
@@ -19,20 +19,19 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         findViewById(R.id.click_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LCObject testObject = new LCObject("TestObject");
+                MLObject testObject = new MLObject("TestObject");
                 testObject.put("foo", "bar");
-                LCDataManager.saveInBackground(testObject, new SaveCallback() {
+                MLDataManager.saveInBackground(testObject, new SaveCallback() {
                     @Override
-                    public void done(LCException e) {
+                    public void done(MLException e) {
                         if (e != null) {
-                            LCLog.e(TAG, e);
+                            MLLog.e(TAG, e);
                             return;
                         }
-                        Toast.makeText(MainActivity.this, "Finish saving data on LC server", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Finish saving data on MaxLeap server", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
