@@ -11,11 +11,11 @@ MaxLeap-StarterProject-Android
 	In Android Studio, go to `File → Open…`
 	Select `build.gradle` in the root of StarterProject-Android.
 
-## Connect your app to LeapCloud
+## Connect your app to MaxLeap
 
 Before continuing, select your MaxLeap app from the menu.
 
-Add your keys to your project:
+Add your keys to your project in `App.onCreate()`:
 
 ```java
 public void onCreate() {
