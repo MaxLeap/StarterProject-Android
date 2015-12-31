@@ -9,7 +9,7 @@ MaxLeap-StarterProject-Android
 2. Open the project
 
 	In Android Studio, go to `File → Open…`
-	Select `build.gradle` in the root of StarterProject-Android.
+	Select `settings.gradle` in the root of StarterProject-Android.
 
 ## Connect your app to MaxLeap
 
@@ -29,9 +29,17 @@ Compile and run!
 After installing the SDK, copy and paste this code into your app, for example in `MainActivity.onCreate()`:
 
 ```java
-MLObject testObject = new MLObject("TestObject");
-testObject.put("foo", "bar");
-MLDataManager.saveInBackground(testObject);
+MLDataManager.fetchInBackground(MLObject.createWithoutData("foobar", "123"),
+        new GetCallback<MLObject>() {
+            @Override
+            public void done(MLObject mlObject, MLException e) {
+                if (e != null && e.getCode() == MLException.INVALID_OBJECT_ID) {
+                    Log.d("MaxLeap", "Connect to MaxLeap server successfully！");
+                } else {
+                    Log.d("MaxLeap", "Invalid MaxLeap credentials!");
+                }
+            }
+        });
 ```
 
-Run your app. A new object of class `TestObject` will be sent to the MaxLeap and saved.
+Run your app. Check the output of logcat.

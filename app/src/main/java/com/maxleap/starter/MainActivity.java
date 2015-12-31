@@ -2,18 +2,15 @@ package com.maxleap.starter;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
+import com.maxleap.GetCallback;
 import com.maxleap.MLDataManager;
-import com.maxleap.MLLog;
 import com.maxleap.MLObject;
-import com.maxleap.SaveCallback;
 import com.maxleap.exception.MLException;
 
 public class MainActivity extends Activity {
-
-    private static final String TAG = MainActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,18 +19,17 @@ public class MainActivity extends Activity {
         findViewById(R.id.click_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MLObject testObject = new MLObject("TestObject");
-                testObject.put("foo", "bar");
-                MLDataManager.saveInBackground(testObject, new SaveCallback() {
-                    @Override
-                    public void done(MLException e) {
-                        if (e != null) {
-                            MLLog.e(TAG, e);
-                            return;
-                        }
-                        Toast.makeText(MainActivity.this, "Finish saving data on MaxLeap server", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                MLDataManager.fetchInBackground(MLObject.createWithoutData("foobar", "123"),
+                        new GetCallback<MLObject>() {
+                            @Override
+                            public void done(MLObject mlObject, MLException e) {
+                                if (e != null && e.getCode() == MLException.INVALID_OBJECT_ID) {
+                                    Log.d("MaxLeap", "Connect to MaxLeap server successfully！");
+                                } else {
+                                    Log.d("MaxLeap", "Invalid MaxLeap credentials!");
+                                }
+                            }
+                        });
             }
         });
     }
