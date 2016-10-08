@@ -22,6 +22,6 @@ public class App extends Application {
          * Fill in this section with your MaxLeap credentials
 		 */
         MaxLeap.setLogLevel(MaxLeap.LOG_LEVEL_ERROR);
-        MaxLeap.initialize(getApplicationContext(), APP_ID, API_KEY, MaxLeap.REGION_US);
+        MaxLeap.initialize(getApplicationContext(), APP_ID, API_KEY, MaxLeap.REGION_CN);
     }
 }
