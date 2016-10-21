@@ -35,5 +35,4 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.2.1'
-    compile files('libs/maxleap-sdk-core-v0.9.9.jar')
 }
