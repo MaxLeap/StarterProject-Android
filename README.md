@@ -19,7 +19,7 @@ Add your keys to your project in `App.onCreate()`:
 
 ```java
 public void onCreate() {
-  MaxLeap.initialize(this, "your app id", "your api key");
+  MaxLeap.initialize(this, "your app id", "your api key", MaxLeap.REGION_CN);
 }
 ```
 Compile and run!
