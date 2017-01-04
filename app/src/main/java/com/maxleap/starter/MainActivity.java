@@ -8,6 +8,9 @@ import android.view.View;
 import com.maxleap.GetCallback;
 import com.maxleap.MLDataManager;
 import com.maxleap.MLObject;
+import com.maxleap.MLQuery;
+import com.maxleap.MLUserManager;
+import com.maxleap.MaxLeap;
 import com.maxleap.exception.MLException;
 
 public class MainActivity extends Activity {
@@ -16,21 +19,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.click_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MLDataManager.fetchInBackground(MLObject.createWithoutData("foobar", "123"),
-                        new GetCallback<MLObject>() {
-                            @Override
-                            public void done(MLObject mlObject, MLException e) {
-                                if (e != null && e.getCode() == MLException.INVALID_OBJECT_ID) {
-                                    Log.d("MaxLeap", "Connect to MaxLeap server successfully！");
-                                } else {
-                                    Log.d("MaxLeap", "Invalid MaxLeap credentials!");
-                                }
-                            }
-                        });
-            }
-        });
+
     }
 }

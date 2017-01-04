@@ -1,13 +1,18 @@
 package com.maxleap.starter;
 
 import android.app.Application;
+import android.util.Log;
 
+import com.maxleap.GetCallback;
+import com.maxleap.MLDataManager;
+import com.maxleap.MLObject;
 import com.maxleap.MaxLeap;
+import com.maxleap.exception.MLException;
 
 public class App extends Application {
 
-    public static final String APP_ID = "Replace this with your App Id";
-    public static final String API_KEY = "Replace this with your Rest Key";
+    public static final String APP_ID = "57f896b0a160020007e0df77";
+    public static final String API_KEY = "VnRmeDlHQjU1aTAzaVRLTmU4Y3Vmdw";
 
     @Override
     public void onCreate() {
@@ -23,5 +28,9 @@ public class App extends Application {
 		 */
         MaxLeap.setLogLevel(MaxLeap.LOG_LEVEL_ERROR);
         MaxLeap.initialize(this, APP_ID, API_KEY, MaxLeap.REGION_CN);
+
+        //check maxleap sdk if connect to server.
+        MaxLeap.checkSDKConnection();
+
     }
 }
